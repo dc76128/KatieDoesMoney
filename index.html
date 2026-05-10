@@ -1,107 +1,103 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Is it worth it? Future Value Calculator</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coming Soon</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #f8fafc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .tagline {
+      margin-top: 15px;
+      font-size: 0.95rem;
+      color: #94a3b8;
+    }
+
+    .email-box {
+      margin-top: 25px;
+    }
+
+    input[type="email"] {
+      padding: 12px;
+      width: 70%;
+      border: none;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    button {
+      padding: 12px 16px;
+      border: none;
+      border-radius: 6px;
+      background: #38bdf8;
+      color: #0f172a;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+
+    button:hover {
+      background: #0ea5e9;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+  </style>
 </head>
+
 <body>
-  <main id="worth-it-calculator" class="wiw-wrap">
-    <div class="wiw-container">
-      <header class="wiw-header">
-        <h1>Is it worth it?</h1>
-        <p>Before you swipe, let's see what that money could look like in the future if you put it to work instead.</p>
-      </header>
+  <div class="container">
+    <h1>Coming Soon</h1>
 
-      <section class="wiw-card" aria-label="Future value calculator">
-        <div class="wiw-field">
-          <label for="wiw-amount">How much does it cost?</label>
-          <div class="wiw-money-input">
-            <span>$</span>
-            <input id="wiw-amount" type="text" inputmode="decimal" placeholder="0.00" autocomplete="off">
-          </div>
-        </div>
+    <p>
+      We're building something simple, fast, and useful.  
+      Stay tuned—launching soon.
+    </p>
 
-        <div class="wiw-field">
-          <p class="wiw-label">Is this a one-time thing, or does it repeat?</p>
-          <div class="wiw-frequency-grid" role="group" aria-label="Purchase frequency">
-            <button type="button" class="wiw-frequency active" data-frequency="once">
-              <strong>One time</strong>
-              <span>A single purchase</span>
-            </button>
-            <button type="button" class="wiw-frequency" data-frequency="daily">
-              <strong>Daily</strong>
-              <span>A daily habit</span>
-            </button>
-            <button type="button" class="wiw-frequency" data-frequency="weekly">
-              <strong>Weekly</strong>
-              <span>Like a coffee habit</span>
-            </button>
-            <button type="button" class="wiw-frequency" data-frequency="monthly">
-              <strong>Monthly</strong>
-              <span>A subscription, etc.</span>
-            </button>
-            <button type="button" class="wiw-frequency" data-frequency="annual">
-              <strong>Yearly</strong>
-              <span>Annual fees or splurges</span>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section id="wiw-results" class="wiw-results" aria-live="polite" hidden>
-        <div class="wiw-summary">
-          <div class="wiw-icon" aria-hidden="true">↗</div>
-          <div>
-            <p class="wiw-summary-main">In 30 years, that money could grow to <strong id="wiw-thirty-year-value">$0</strong>.</p>
-            <p class="wiw-summary-sub">That's <span id="wiw-multiple">0.0x</span> what you'd put in, assuming a 7% annual return.</p>
-            <p class="wiw-meaning"><strong>What this could mean:</strong> <span id="wiw-meaning-message"></span></p>
-          </div>
-        </div>
-
-        <div class="wiw-result-grid">
-          <div class="wiw-result-card">
-            <span>5 years</span>
-            <strong id="wiw-5">$0</strong>
-            <em id="wiw-growth-5">+0% growth</em>
-            <small>A quick gut check</small>
-          </div>
-          <div class="wiw-result-card">
-            <span>10 years</span>
-            <strong id="wiw-10">$0</strong>
-            <em id="wiw-growth-10">+0% growth</em>
-            <small>A future-you number</small>
-          </div>
-          <div class="wiw-result-card">
-            <span>20 years</span>
-            <strong id="wiw-20">$0</strong>
-            <em id="wiw-growth-20">+0% growth</em>
-            <small>Time starts helping</small>
-          </div>
-          <div class="wiw-result-card">
-            <span>30 years</span>
-            <strong id="wiw-30">$0</strong>
-            <em id="wiw-growth-30">+0% growth</em>
-            <small>The big picture</small>
-          </div>
-        </div>
-
-        <p class="wiw-disclaimer" id="wiw-disclaimer">Based on the amount entered, invested at 7%/year. Past performance doesn't guarantee future results.</p>
-      </section>
-
-      <div class="wiw-divider"></div>
-
-      <!-- These empty containers are filled from content.js by app.js. -->
-      <div id="wiw-education-sections"></div>
-      <section id="wiw-next-steps" class="wiw-next-steps" aria-labelledby="wiw-next-steps-title"></section>
-
-      <p class="wiw-footer-note">This tool is for education and inspiration, not personalized financial advice.</p>
+    <div class="tagline">
+      A better experience is on the way.
     </div>
-  </main>
 
-  <!-- Load editable content first, then calculator logic. -->
-  <script src="content.js"></script>
-  <script src="app.js"></script>
+    <!-- Optional email capture (static demo only) -->
+    <div class="email-box">
+      <input type="email" placeholder="Enter your email" />
+      <button onclick="alert('Thanks! (This is just a demo)')">Notify Me</button>
+    </div>
+
+    <div class="footer">
+      © Your Brand • Built with GitHub Pages
+    </div>
+  </div>
 </body>
 </html>
