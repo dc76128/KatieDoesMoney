@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Future Value Calculator</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 40px;
+      color: #222;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .results {
+      margin-top: 25px;
+    }
+
+    .result-row {
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .year {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Future Value Calculator</h1>
+
+    <label for="amount">Starting Amount</label>
+
+    <input
+      type="number"
+      id="amount"
+      placeholder="Enter amount"
+      min="0"
+      step="0.01"
+    />
+
+    <button onclick="calculateFutureValue()">
+      Calculate
+    </button>
+
+    <div class="results" id="results"></div>
+  </div>
+
+  <script>
+    function calculateFutureValue() {
+      const amount = parseFloat(document.getElementById('amount').value);
+
+      if (isNaN(amount) || amount <= 0) {
+        alert('Please enter a valid amount.');
+        return;
+      }
+
+      const rate = 0.07;
+      const years = [5, 10, 20, 30];
+
+      let html = '';
+
+      years.forEach(year => {
+        const futureValue = amount * Math.pow(1 + rate, year);
+
+        html += `
+          <div class="result-row">
+            <span class="year">${year} Years</span>
+            <span>$${futureValue.toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2
+            })}</span>
+          </div>
+        `;
+      });
+
+      document.getElementById('results').innerHTML = html;
+    }
+  </script>
+
+</body>
+</html>
