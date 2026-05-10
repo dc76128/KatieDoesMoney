@@ -22,6 +22,10 @@
             <strong>One time</strong>
             <span>A single purchase</span>
           </button>
+          <button type="button" class="wiw-frequency" data-frequency="daily">
+            <strong>Daily</strong>
+            <span>A daily habit</span>
+          </button>
           <button type="button" class="wiw-frequency" data-frequency="weekly">
             <strong>Weekly</strong>
             <span>Like a coffee habit</span>
@@ -79,9 +83,11 @@
 
     <div class="wiw-divider"></div>
 
-    <section class="wiw-education">
-      <h2>So… where would I actually put it?</h2>
-      <p class="wiw-section-subtitle">Here are the most common ways everyday people invest:</p>
+    <details class="wiw-expand">
+      <summary>Where would I actually put it?</summary>
+      <section class="wiw-education">
+        <h2>So… where would I actually put it?</h2>
+        <p class="wiw-section-subtitle">Here are the most common ways everyday people invest:</p>
 
       <article class="wiw-info-card">
         <div class="wiw-info-title"><span>📈</span><h3>Index Funds</h3></div>
@@ -103,10 +109,13 @@
         <p>If you’re not ready to invest yet, a high-yield savings account can be a simple place to park cash while earning interest.</p>
         <p class="wiw-tip"><strong>How to access:</strong> Try banks like Ally, Marcus, or SoFi.</p>
       </article>
-    </section>
+      </section>
+    </details>
 
-    <section class="wiw-education">
-      <h2>Good to know</h2>
+    <details class="wiw-expand">
+      <summary>Good to know</summary>
+      <section class="wiw-education">
+        <h2>Good to know</h2>
       <div class="wiw-note-card">
         <strong>The 7% rule</strong>
         <p>This calculator uses a 7% annual return as a simple long-term benchmark. Real returns vary year to year.</p>
@@ -119,7 +128,8 @@
         <strong>The hardest part is starting</strong>
         <p>Time is the ingredient that makes compounding powerful. Even small amounts can matter over long periods.</p>
       </div>
-    </section>
+      </section>
+    </details>
 
     <p class="wiw-footer-note">This tool is for education and inspiration — not personalized financial advice.</p>
   </div>
@@ -163,7 +173,7 @@
   #worth-it-calculator .wiw-money-input span { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--wiw-muted); font-size: 24px; font-weight: 700; }
   #worth-it-calculator input { width: 100%; border: 1px solid var(--wiw-border); background: var(--wiw-soft); border-radius: 16px; padding: 16px 16px 16px 40px; font-size: 28px; font-weight: 800; color: var(--wiw-text); outline: none; }
   #worth-it-calculator input:focus { border-color: var(--wiw-primary); box-shadow: 0 0 0 4px rgba(31, 122, 85, 0.14); }
-  #worth-it-calculator .wiw-frequency-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  #worth-it-calculator .wiw-frequency-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
   #worth-it-calculator .wiw-frequency { appearance: none; border: 1px solid var(--wiw-border); border-radius: 16px; padding: 14px 12px; background: #fff; color: var(--wiw-text); text-align: left; cursor: pointer; transition: 160ms ease; }
   #worth-it-calculator .wiw-frequency:hover { border-color: rgba(31, 122, 85, 0.45); background: #fbfdfb; }
   #worth-it-calculator .wiw-frequency.active { border-color: var(--wiw-primary); background: var(--wiw-accent); color: #174d38; box-shadow: 0 4px 16px rgba(31, 122, 85, 0.12); }
@@ -197,6 +207,12 @@
   #worth-it-calculator .wiw-note-card { box-shadow: none; padding: 18px; margin-top: 12px; }
   #worth-it-calculator .wiw-note-card strong { display: block; font-size: 14px; margin-bottom: 5px; }
   #worth-it-calculator .wiw-note-card p { color: var(--wiw-muted); font-size: 14px; line-height: 1.6; }
+  #worth-it-calculator .wiw-expand { background: var(--wiw-card); border: 1px solid var(--wiw-border); border-radius: 20px; padding: 18px 20px; margin-top: 16px; box-shadow: var(--wiw-shadow); }
+  #worth-it-calculator .wiw-expand summary { cursor: pointer; font-weight: 850; font-size: 18px; color: var(--wiw-text); list-style: none; }
+  #worth-it-calculator .wiw-expand summary::-webkit-details-marker { display: none; }
+  #worth-it-calculator .wiw-expand summary::after { content: "+"; float: right; font-size: 22px; line-height: 1; color: var(--wiw-primary); }
+  #worth-it-calculator .wiw-expand[open] summary::after { content: "–"; }
+  #worth-it-calculator .wiw-expand .wiw-education { margin-top: 18px; }
   @media (max-width: 640px) {
     #worth-it-calculator { padding: 26px 12px; }
     #worth-it-calculator .wiw-frequency-grid,
@@ -242,6 +258,11 @@
       if (selectedFrequency === 'once') {
         return amount * Math.pow(1 + annualReturn, yearCount);
       }
+      if (selectedFrequency === 'daily') {
+        var dailyRate = annualReturn / 365;
+        var days = 365 * yearCount;
+        return amount * ((Math.pow(1 + dailyRate, days) - 1) / dailyRate);
+      }
       if (selectedFrequency === 'weekly') {
         var weeklyRate = annualReturn / 52;
         var weeks = 52 * yearCount;
@@ -258,6 +279,7 @@
 
     function contributedAmount(amount, selectedFrequency, yearCount) {
       if (selectedFrequency === 'once') return amount;
+      if (selectedFrequency === 'daily') return amount * 365 * yearCount;
       if (selectedFrequency === 'weekly') return amount * 52 * yearCount;
       if (selectedFrequency === 'monthly') return amount * 12 * yearCount;
       return amount * yearCount;
@@ -265,6 +287,7 @@
 
     function readableFrequency(selectedFrequency) {
       if (selectedFrequency === 'once') return 'one-time purchase';
+      if (selectedFrequency === 'daily') return 'spent daily';
       if (selectedFrequency === 'weekly') return 'spent weekly';
       if (selectedFrequency === 'monthly') return 'spent monthly';
       return 'spent yearly';
