@@ -1,339 +1,107 @@
-<!-- KIT EMBED: Is It Worth It? Future Value Calculator -->
-<div id="worth-it-calculator" class="wiw-wrap">
-  <div class="wiw-container">
-    <header class="wiw-header">
-      <h1>Is it worth it?</h1>
-      <p>Before you swipe, let’s see what that money could look like in the future — if you put it to work instead.</p>
-    </header>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Is it worth it? Future Value Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="worth-it-calculator" class="wiw-wrap">
+    <div class="wiw-container">
+      <header class="wiw-header">
+        <h1>Is it worth it?</h1>
+        <p>Before you swipe, let's see what that money could look like in the future if you put it to work instead.</p>
+      </header>
 
-    <section class="wiw-card" aria-label="Future value calculator">
-      <div class="wiw-field">
-        <label for="wiw-amount">How much does it cost?</label>
-        <div class="wiw-money-input">
-          <span>$</span>
-          <input id="wiw-amount" type="text" inputmode="decimal" placeholder="0.00" autocomplete="off" />
+      <section class="wiw-card" aria-label="Future value calculator">
+        <div class="wiw-field">
+          <label for="wiw-amount">How much does it cost?</label>
+          <div class="wiw-money-input">
+            <span>$</span>
+            <input id="wiw-amount" type="text" inputmode="decimal" placeholder="0.00" autocomplete="off">
+          </div>
         </div>
-      </div>
 
-      <div class="wiw-field">
-        <p class="wiw-label">Is this a one-time thing, or does it repeat?</p>
-        <div class="wiw-frequency-grid" role="group" aria-label="Purchase frequency">
-          <button type="button" class="wiw-frequency active" data-frequency="once">
-            <strong>One time</strong>
-            <span>A single purchase</span>
-          </button>
-          <button type="button" class="wiw-frequency" data-frequency="daily">
-            <strong>Daily</strong>
-            <span>A daily habit</span>
-          </button>
-          <button type="button" class="wiw-frequency" data-frequency="weekly">
-            <strong>Weekly</strong>
-            <span>Like a coffee habit</span>
-          </button>
-          <button type="button" class="wiw-frequency" data-frequency="monthly">
-            <strong>Monthly</strong>
-            <span>A subscription, etc.</span>
-          </button>
-          <button type="button" class="wiw-frequency" data-frequency="annual">
-            <strong>Yearly</strong>
-            <span>Annual fees or splurges</span>
-          </button>
+        <div class="wiw-field">
+          <p class="wiw-label">Is this a one-time thing, or does it repeat?</p>
+          <div class="wiw-frequency-grid" role="group" aria-label="Purchase frequency">
+            <button type="button" class="wiw-frequency active" data-frequency="once">
+              <strong>One time</strong>
+              <span>A single purchase</span>
+            </button>
+            <button type="button" class="wiw-frequency" data-frequency="daily">
+              <strong>Daily</strong>
+              <span>A daily habit</span>
+            </button>
+            <button type="button" class="wiw-frequency" data-frequency="weekly">
+              <strong>Weekly</strong>
+              <span>Like a coffee habit</span>
+            </button>
+            <button type="button" class="wiw-frequency" data-frequency="monthly">
+              <strong>Monthly</strong>
+              <span>A subscription, etc.</span>
+            </button>
+            <button type="button" class="wiw-frequency" data-frequency="annual">
+              <strong>Yearly</strong>
+              <span>Annual fees or splurges</span>
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <section id="wiw-results" class="wiw-results" aria-live="polite" hidden>
-      <div class="wiw-summary">
-        <div class="wiw-icon">↗</div>
-        <div>
-          <p class="wiw-summary-main">In 30 years, that money could grow to <strong id="wiw-thirty-year-value">$0</strong>.</p>
-          <p class="wiw-summary-sub">That’s <span id="wiw-multiple">0.0×</span> what you’d put in — assuming a 7% annual return.</p>
-        </div>
-      </div>
-
-      <div class="wiw-result-grid">
-        <div class="wiw-result-card">
-          <span>5 years</span>
-          <strong id="wiw-5">$0</strong>
-          <em id="wiw-growth-5">+0% growth</em>
-          <small>A quick gut check</small>
-        </div>
-        <div class="wiw-result-card">
-          <span>10 years</span>
-          <strong id="wiw-10">$0</strong>
-          <em id="wiw-growth-10">+0% growth</em>
-          <small>A future-you number</small>
-        </div>
-        <div class="wiw-result-card">
-          <span>20 years</span>
-          <strong id="wiw-20">$0</strong>
-          <em id="wiw-growth-20">+0% growth</em>
-          <small>Time starts helping</small>
-        </div>
-        <div class="wiw-result-card">
-          <span>30 years</span>
-          <strong id="wiw-30">$0</strong>
-          <em id="wiw-growth-30">+0% growth</em>
-          <small>The big picture</small>
-        </div>
-      </div>
-
-      <p class="wiw-disclaimer" id="wiw-disclaimer">Based on the amount entered, invested at 7%/year. Past performance doesn’t guarantee future results.</p>
-    </section>
-
-    <div class="wiw-divider"></div>
-
-    <details class="wiw-expand">
-      <summary>Where would I actually put it?</summary>
-      <section class="wiw-education">
-        <h2>So… where would I actually put it?</h2>
-        <p class="wiw-section-subtitle">Here are the most common ways everyday people invest:</p>
-
-      <article class="wiw-info-card">
-        <div class="wiw-info-title"><span>📈</span><h3>Index Funds</h3></div>
-        <p class="wiw-tagline">Set it and mostly forget it.</p>
-        <p>An index fund is like buying a tiny slice of hundreds of companies at once. Low fees, low effort, historically strong returns.</p>
-        <p class="wiw-tip"><strong>How to access:</strong> Available through Fidelity, Vanguard, or Schwab. Search for “S&amp;P 500 index fund.”</p>
-      </article>
-
-      <article class="wiw-info-card">
-        <div class="wiw-info-title"><span>🧺</span><h3>ETFs</h3></div>
-        <p class="wiw-tagline">Like index funds, but you can buy them like a stock.</p>
-        <p>ETFs are baskets of investments that trade on the stock market. Popular examples include VTI or VOO.</p>
-        <p class="wiw-tip"><strong>How to access:</strong> Available on most brokerage apps, including Fidelity, Schwab, and Robinhood.</p>
-      </article>
-
-      <article class="wiw-info-card">
-        <div class="wiw-info-title"><span>🏦</span><h3>High-Yield Savings Account</h3></div>
-        <p class="wiw-tagline">Better than letting it sit in checking.</p>
-        <p>If you’re not ready to invest yet, a high-yield savings account can be a simple place to park cash while earning interest.</p>
-        <p class="wiw-tip"><strong>How to access:</strong> Try banks like Ally, Marcus, or SoFi.</p>
-      </article>
       </section>
-    </details>
 
-    <details class="wiw-expand">
-      <summary>Good to know</summary>
-      <section class="wiw-education">
-        <h2>Good to know</h2>
-      <div class="wiw-note-card">
-        <strong>The 7% rule</strong>
-        <p>This calculator uses a 7% annual return as a simple long-term benchmark. Real returns vary year to year.</p>
-      </div>
-      <div class="wiw-note-card">
-        <strong>The “latte factor” is real-ish</strong>
-        <p>Nobody’s saying never buy coffee. But knowing the long-term number makes the tradeoff visible.</p>
-      </div>
-      <div class="wiw-note-card">
-        <strong>The hardest part is starting</strong>
-        <p>Time is the ingredient that makes compounding powerful. Even small amounts can matter over long periods.</p>
-      </div>
+      <section id="wiw-results" class="wiw-results" aria-live="polite" hidden>
+        <div class="wiw-summary">
+          <div class="wiw-icon" aria-hidden="true">↗</div>
+          <div>
+            <p class="wiw-summary-main">In 30 years, that money could grow to <strong id="wiw-thirty-year-value">$0</strong>.</p>
+            <p class="wiw-summary-sub">That's <span id="wiw-multiple">0.0x</span> what you'd put in, assuming a 7% annual return.</p>
+            <p class="wiw-meaning"><strong>What this could mean:</strong> <span id="wiw-meaning-message"></span></p>
+          </div>
+        </div>
+
+        <div class="wiw-result-grid">
+          <div class="wiw-result-card">
+            <span>5 years</span>
+            <strong id="wiw-5">$0</strong>
+            <em id="wiw-growth-5">+0% growth</em>
+            <small>A quick gut check</small>
+          </div>
+          <div class="wiw-result-card">
+            <span>10 years</span>
+            <strong id="wiw-10">$0</strong>
+            <em id="wiw-growth-10">+0% growth</em>
+            <small>A future-you number</small>
+          </div>
+          <div class="wiw-result-card">
+            <span>20 years</span>
+            <strong id="wiw-20">$0</strong>
+            <em id="wiw-growth-20">+0% growth</em>
+            <small>Time starts helping</small>
+          </div>
+          <div class="wiw-result-card">
+            <span>30 years</span>
+            <strong id="wiw-30">$0</strong>
+            <em id="wiw-growth-30">+0% growth</em>
+            <small>The big picture</small>
+          </div>
+        </div>
+
+        <p class="wiw-disclaimer" id="wiw-disclaimer">Based on the amount entered, invested at 7%/year. Past performance doesn't guarantee future results.</p>
       </section>
-    </details>
 
-    <p class="wiw-footer-note">This tool is for education and inspiration — not personalized financial advice.</p>
-  </div>
-</div>
+      <div class="wiw-divider"></div>
 
-<style>
-  #worth-it-calculator {
-    --wiw-bg: #fbf8f3;
-    --wiw-card: #ffffff;
-    --wiw-text: #1b2228;
-    --wiw-muted: #6c737a;
-    --wiw-border: #e8dfd3;
-    --wiw-primary: #1f7a55;
-    --wiw-accent: #eaf6ef;
-    --wiw-soft: #f5efe6;
-    --wiw-shadow: 0 16px 40px rgba(31, 42, 55, 0.07);
-    box-sizing: border-box;
-    width: 100%;
-    background: var(--wiw-bg);
-    color: var(--wiw-text);
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    padding: 34px 14px;
-  }
-  #worth-it-calculator *, #worth-it-calculator *::before, #worth-it-calculator *::after { box-sizing: border-box; }
-  #worth-it-calculator .wiw-container { max-width: 720px; margin: 0 auto; }
-  #worth-it-calculator .wiw-header { text-align: center; margin-bottom: 28px; }
-  #worth-it-calculator h1,
-  #worth-it-calculator h2,
-  #worth-it-calculator h3,
-  #worth-it-calculator p { margin: 0; }
-  #worth-it-calculator h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(38px, 8vw, 58px); line-height: 1.02; letter-spacing: -0.04em; margin-bottom: 12px; }
-  #worth-it-calculator .wiw-header p { max-width: 620px; margin: 0 auto; color: var(--wiw-muted); font-size: 17px; line-height: 1.65; }
-  #worth-it-calculator .wiw-card,
-  #worth-it-calculator .wiw-info-card,
-  #worth-it-calculator .wiw-note-card { background: var(--wiw-card); border: 1px solid var(--wiw-border); border-radius: 22px; box-shadow: var(--wiw-shadow); }
-  #worth-it-calculator .wiw-card { padding: clamp(20px, 5vw, 34px); }
-  #worth-it-calculator .wiw-field + .wiw-field { margin-top: 24px; }
-  #worth-it-calculator label,
-  #worth-it-calculator .wiw-label { display: block; font-size: 14px; font-weight: 750; margin-bottom: 10px; color: var(--wiw-text); }
-  #worth-it-calculator .wiw-money-input { position: relative; }
-  #worth-it-calculator .wiw-money-input span { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--wiw-muted); font-size: 24px; font-weight: 700; }
-  #worth-it-calculator input { width: 100%; border: 1px solid var(--wiw-border); background: var(--wiw-soft); border-radius: 16px; padding: 16px 16px 16px 40px; font-size: 28px; font-weight: 800; color: var(--wiw-text); outline: none; }
-  #worth-it-calculator input:focus { border-color: var(--wiw-primary); box-shadow: 0 0 0 4px rgba(31, 122, 85, 0.14); }
-  #worth-it-calculator .wiw-frequency-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
-  #worth-it-calculator .wiw-frequency { appearance: none; border: 1px solid var(--wiw-border); border-radius: 16px; padding: 14px 12px; background: #fff; color: var(--wiw-text); text-align: left; cursor: pointer; transition: 160ms ease; }
-  #worth-it-calculator .wiw-frequency:hover { border-color: rgba(31, 122, 85, 0.45); background: #fbfdfb; }
-  #worth-it-calculator .wiw-frequency.active { border-color: var(--wiw-primary); background: var(--wiw-accent); color: #174d38; box-shadow: 0 4px 16px rgba(31, 122, 85, 0.12); }
-  #worth-it-calculator .wiw-frequency strong { display: block; font-size: 14px; margin-bottom: 3px; }
-  #worth-it-calculator .wiw-frequency span { display: block; color: var(--wiw-muted); font-size: 12px; line-height: 1.25; }
-  #worth-it-calculator .wiw-results { margin-top: 26px; }
-  #worth-it-calculator .wiw-summary { display: flex; gap: 14px; align-items: flex-start; background: rgba(31, 122, 85, 0.06); border: 1px solid rgba(31, 122, 85, 0.18); border-radius: 22px; padding: 18px; margin-bottom: 16px; }
-  #worth-it-calculator .wiw-icon { width: 34px; height: 34px; border-radius: 999px; background: rgba(31, 122, 85, 0.14); color: var(--wiw-primary); display: grid; place-items: center; font-weight: 900; flex: 0 0 34px; }
-  #worth-it-calculator .wiw-summary-main { font-size: 15px; font-weight: 750; line-height: 1.45; }
-  #worth-it-calculator .wiw-summary-main strong { color: var(--wiw-primary); }
-  #worth-it-calculator .wiw-summary-sub { font-size: 13px; color: var(--wiw-muted); margin-top: 3px; line-height: 1.45; }
-  #worth-it-calculator .wiw-result-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  #worth-it-calculator .wiw-result-card { background: var(--wiw-card); border: 1px solid var(--wiw-border); border-radius: 20px; padding: 16px; box-shadow: 0 10px 26px rgba(31, 42, 55, 0.05); }
-  #worth-it-calculator .wiw-result-card span { display: block; color: var(--wiw-muted); font-size: 12px; font-weight: 700; }
-  #worth-it-calculator .wiw-result-card strong { display: block; font-size: clamp(22px, 4vw, 31px); line-height: 1.1; margin-top: 6px; letter-spacing: -0.04em; }
-  #worth-it-calculator .wiw-result-card em { display: block; color: var(--wiw-primary); font-size: 12px; font-style: normal; font-weight: 800; margin-top: 6px; }
-  #worth-it-calculator .wiw-result-card small { display: block; color: var(--wiw-muted); font-size: 11px; font-style: italic; margin-top: 8px; }
-  #worth-it-calculator .wiw-disclaimer,
-  #worth-it-calculator .wiw-footer-note { text-align: center; color: var(--wiw-muted); font-size: 12px; line-height: 1.6; margin-top: 16px; }
-  #worth-it-calculator .wiw-divider { border-top: 1px solid var(--wiw-border); margin: 56px 0 34px; }
-  #worth-it-calculator .wiw-education { margin-top: 34px; }
-  #worth-it-calculator h2 { font-family: Georgia, "Times New Roman", serif; font-size: 29px; line-height: 1.12; letter-spacing: -0.03em; margin-bottom: 6px; }
-  #worth-it-calculator .wiw-section-subtitle { color: var(--wiw-muted); font-size: 14px; margin-bottom: 16px; }
-  #worth-it-calculator .wiw-info-card { padding: 20px; margin-top: 12px; box-shadow: none; }
-  #worth-it-calculator .wiw-info-title { display: flex; gap: 9px; align-items: center; margin-bottom: 4px; }
-  #worth-it-calculator .wiw-info-title span { font-size: 22px; }
-  #worth-it-calculator h3 { font-size: 16px; font-weight: 800; }
-  #worth-it-calculator .wiw-tagline { color: var(--wiw-primary); font-size: 13px; font-weight: 800; margin-bottom: 7px; }
-  #worth-it-calculator .wiw-info-card p:not(.wiw-tagline):not(.wiw-tip) { color: var(--wiw-muted); font-size: 14px; line-height: 1.6; }
-  #worth-it-calculator .wiw-tip { background: rgba(245, 239, 230, 0.78); border-radius: 13px; padding: 10px 12px; font-size: 12px; color: #4f5963; line-height: 1.5; margin-top: 10px; }
-  #worth-it-calculator .wiw-note-card { box-shadow: none; padding: 18px; margin-top: 12px; }
-  #worth-it-calculator .wiw-note-card strong { display: block; font-size: 14px; margin-bottom: 5px; }
-  #worth-it-calculator .wiw-note-card p { color: var(--wiw-muted); font-size: 14px; line-height: 1.6; }
-  #worth-it-calculator .wiw-expand { background: var(--wiw-card); border: 1px solid var(--wiw-border); border-radius: 20px; padding: 18px 20px; margin-top: 16px; box-shadow: var(--wiw-shadow); }
-  #worth-it-calculator .wiw-expand summary { cursor: pointer; font-weight: 850; font-size: 18px; color: var(--wiw-text); list-style: none; }
-  #worth-it-calculator .wiw-expand summary::-webkit-details-marker { display: none; }
-  #worth-it-calculator .wiw-expand summary::after { content: "+"; float: right; font-size: 22px; line-height: 1; color: var(--wiw-primary); }
-  #worth-it-calculator .wiw-expand[open] summary::after { content: "–"; }
-  #worth-it-calculator .wiw-expand .wiw-education { margin-top: 18px; }
-  @media (max-width: 640px) {
-    #worth-it-calculator { padding: 26px 12px; }
-    #worth-it-calculator .wiw-frequency-grid,
-    #worth-it-calculator .wiw-result-grid { grid-template-columns: repeat(2, 1fr); }
-    #worth-it-calculator .wiw-card { border-radius: 18px; }
-  }
-</style>
+      <!-- These empty containers are filled from content.js by app.js. -->
+      <div id="wiw-education-sections"></div>
+      <section id="wiw-next-steps" class="wiw-next-steps" aria-labelledby="wiw-next-steps-title"></section>
 
-<script>
-(function () {
-  function initWorthItCalculator() {
-    var root = document.getElementById('worth-it-calculator');
-    if (!root || root.dataset.ready === 'true') return;
-    root.dataset.ready = 'true';
+      <p class="wiw-footer-note">This tool is for education and inspiration, not personalized financial advice.</p>
+    </div>
+  </main>
 
-    var amountInput = root.querySelector('#wiw-amount');
-    var frequencyButtons = root.querySelectorAll('.wiw-frequency');
-    var results = root.querySelector('#wiw-results');
-    var frequency = 'once';
-    var annualReturn = 0.07;
-    var years = [5, 10, 20, 30];
-
-    function parseAmount(value) {
-      var cleaned = String(value || '').replace(/[^0-9.]/g, '');
-      var firstDecimal = cleaned.indexOf('.');
-      if (firstDecimal !== -1) {
-        cleaned = cleaned.slice(0, firstDecimal + 1) + cleaned.slice(firstDecimal + 1).replace(/\./g, '');
-      }
-      return parseFloat(cleaned) || 0;
-    }
-
-    function formatMoney(value, compact) {
-      if (compact && value >= 1000000) return '$' + (value / 1000000).toFixed(2) + 'M';
-      if (compact && value >= 1000) return '$' + (value / 1000).toFixed(1) + 'K';
-      return new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        maximumFractionDigits: value < 1000 ? 2 : 0
-      }).format(value);
-    }
-
-    function futureValue(amount, selectedFrequency, yearCount) {
-      if (selectedFrequency === 'once') {
-        return amount * Math.pow(1 + annualReturn, yearCount);
-      }
-      if (selectedFrequency === 'daily') {
-        var dailyRate = annualReturn / 365;
-        var days = 365 * yearCount;
-        return amount * ((Math.pow(1 + dailyRate, days) - 1) / dailyRate);
-      }
-      if (selectedFrequency === 'weekly') {
-        var weeklyRate = annualReturn / 52;
-        var weeks = 52 * yearCount;
-        return amount * ((Math.pow(1 + weeklyRate, weeks) - 1) / weeklyRate);
-      }
-      if (selectedFrequency === 'monthly') {
-        var monthlyRate = annualReturn / 12;
-        var months = 12 * yearCount;
-        return amount * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
-      }
-      var annualPayments = yearCount;
-      return amount * ((Math.pow(1 + annualReturn, annualPayments) - 1) / annualReturn);
-    }
-
-    function contributedAmount(amount, selectedFrequency, yearCount) {
-      if (selectedFrequency === 'once') return amount;
-      if (selectedFrequency === 'daily') return amount * 365 * yearCount;
-      if (selectedFrequency === 'weekly') return amount * 52 * yearCount;
-      if (selectedFrequency === 'monthly') return amount * 12 * yearCount;
-      return amount * yearCount;
-    }
-
-    function readableFrequency(selectedFrequency) {
-      if (selectedFrequency === 'once') return 'one-time purchase';
-      if (selectedFrequency === 'daily') return 'spent daily';
-      if (selectedFrequency === 'weekly') return 'spent weekly';
-      if (selectedFrequency === 'monthly') return 'spent monthly';
-      return 'spent yearly';
-    }
-
-    function update() {
-      var amount = parseAmount(amountInput.value);
-      if (amount <= 0) {
-        results.hidden = true;
-        return;
-      }
-
-      results.hidden = false;
-      var thirtyFuture = futureValue(amount, frequency, 30);
-      var thirtyContributed = contributedAmount(amount, frequency, 30);
-      var multiple = thirtyContributed > 0 ? (thirtyFuture / thirtyContributed).toFixed(1) : '0.0';
-
-      root.querySelector('#wiw-thirty-year-value').textContent = formatMoney(thirtyFuture, false);
-      root.querySelector('#wiw-multiple').textContent = multiple + '×';
-      root.querySelector('#wiw-disclaimer').textContent = 'Based on ' + formatMoney(amount, true) + ' ' + readableFrequency(frequency) + ', invested at 7%/year. Past performance doesn’t guarantee future results.';
-
-      years.forEach(function (yearCount) {
-        var fv = futureValue(amount, frequency, yearCount);
-        var contributed = contributedAmount(amount, frequency, yearCount);
-        var growth = contributed > 0 ? Math.round(((fv - contributed) / contributed) * 100) : 0;
-        root.querySelector('#wiw-' + yearCount).textContent = formatMoney(fv, true);
-        root.querySelector('#wiw-growth-' + yearCount).textContent = '+' + growth + '% growth';
-      });
-    }
-
-    amountInput.addEventListener('input', update);
-    frequencyButtons.forEach(function (button) {
-      button.addEventListener('click', function () {
-        frequency = button.getAttribute('data-frequency');
-        frequencyButtons.forEach(function (btn) { btn.classList.remove('active'); });
-        button.classList.add('active');
-        update();
-      });
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initWorthItCalculator);
-  } else {
-    initWorthItCalculator();
-  }
-})();
-</script>
-<!-- END KIT EMBED -->
+  <!-- Load editable content first, then calculator logic. -->
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
