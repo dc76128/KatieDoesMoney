@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Coming Soon</title>
 
   <style>
@@ -14,62 +14,88 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       text-align: center;
+      padding: 20px;
     }
 
     .container {
-      max-width: 600px;
-      padding: 20px;
+      max-width: 650px;
+      width: 100%;
     }
 
     h1 {
       font-size: 3rem;
       margin-bottom: 10px;
-      letter-spacing: 1px;
     }
 
     p {
-      font-size: 1.1rem;
       color: #cbd5e1;
       line-height: 1.6;
     }
 
-    .tagline {
-      margin-top: 15px;
-      font-size: 0.95rem;
-      color: #94a3b8;
-    }
-
-    .email-box {
+    /* FACT CAROUSEL */
+    .fact-box {
       margin-top: 25px;
+      padding: 20px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
     }
 
-    input[type="email"] {
-      padding: 12px;
-      width: 70%;
-      border: none;
-      border-radius: 6px;
-      outline: none;
+    .fact-controls {
+      margin-top: 10px;
     }
 
     button {
-      padding: 12px 16px;
+      padding: 10px 14px;
       border: none;
       border-radius: 6px;
       background: #38bdf8;
       color: #0f172a;
       cursor: pointer;
       font-weight: bold;
-      margin-left: 5px;
+      margin: 5px;
     }
 
     button:hover {
       background: #0ea5e9;
     }
 
+    /* SOCIAL LINKS */
+    .social {
+      margin-top: 30px;
+    }
+
+    .social a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      color: white;
+    }
+
+    .ig {
+      background: #E1306C;
+    }
+
+    .fb {
+      background: #1877F2;
+    }
+
+    .tagline {
+      margin-top: 15px;
+      color: #94a3b8;
+    }
+
     .footer {
-      margin-top: 40px;
+      margin-top: 35px;
       font-size: 0.8rem;
       color: #64748b;
     }
@@ -86,18 +112,63 @@
     </p>
 
     <div class="tagline">
-      A better experience is on the way.
+      A better financial experience is on the way.
     </div>
 
-    <!-- Optional email capture (static demo only) -->
-    <div class="email-box">
-      <input type="email" placeholder="Enter your email" />
-      <button onclick="alert('Thanks!')">Notify Me</button>
+    <!-- FINANCE FACT CAROUSEL -->
+    <div class="fact-box" id="factBox">
+      Loading finance fact...
+    </div>
+
+    <div class="fact-controls">
+      <button onclick="prevFact()">← Prev</button>
+      <button onclick="nextFact()">Next →</button>
+    </div>
+
+    <!-- SOCIAL LINKS -->
+    <div class="social">
+      <a class="ig" href="#" target="_blank">Instagram</a>
+      <a class="fb" href="#" target="_blank">Facebook</a>
     </div>
 
     <div class="footer">
-      © Katie Does Money • 2026
+      © Your Brand • Built with GitHub Pages
     </div>
   </div>
+
+  <script>
+    const facts = [
+      "The average American has about $90,000 in debt.",
+      "Compounding interest is often called the 8th wonder of the world.",
+      "Most millionaires build wealth through consistent investing, not high income alone.",
+      "A $5 daily habit can grow to over $180,000 in 30 years at 8% returns.",
+      "Credit scores were introduced in the 1980s.",
+      "Diversification reduces risk but doesn't eliminate it.",
+      "Inflation reduces the purchasing power of money over time."
+    ];
+
+    let index = 0;
+    const box = document.getElementById("factBox");
+
+    function showFact() {
+      box.textContent = facts[index];
+    }
+
+    function nextFact() {
+      index = (index + 1) % facts.length;
+      showFact();
+    }
+
+    function prevFact() {
+      index = (index - 1 + facts.length) % facts.length;
+      showFact();
+    }
+
+    // auto-load first fact
+    showFact();
+
+    // optional auto-rotate every 8 seconds
+    setInterval(nextFact, 8000);
+  </script>
 </body>
 </html>
